@@ -12,7 +12,7 @@ class Role extends Model
     public function users()
     {
         return $this->belongsToMany(
-            related:User::class, table:'role_user'
+            related:User::class, table:'role_user_relations'
         );
     }
 }
