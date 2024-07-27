@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    
+    public function users()
+    {
+        return $this->belongsToMany(
+            related:User::class, table:'role_user'
+        );
+    }
 }
