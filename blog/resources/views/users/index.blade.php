@@ -1,4 +1,4 @@
-<x--app-layout>
+<x-app-layout>
 
   <body>
     @section('content')
@@ -9,6 +9,7 @@
             <th scope="col">#id</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Role</th>
             <th scope="col">Created Date</th>
           </tr>
         </thead>
@@ -18,6 +19,16 @@
               <th scope="row">{{ $user->id }}</th>
               <th>{{ $user->name }}</th>
               <td>{{ $user->email }}</td>
+              <td>
+                <ul>
+                  @foreach ($user->roles as $role)
+                    <li>
+                      {{ $role->name }}
+                    </li>
+
+                  @endforeach
+                </ul>  
+              </td>
               <td>{{ Hekmatinasser\Verta\Verta::instance($user->created_at)->formatWord('l dS F') }}</td>
             </tr>
         </tbody>
@@ -30,4 +41,4 @@
 
 
 
-</x--app-layout>
+</x-app-layout>
