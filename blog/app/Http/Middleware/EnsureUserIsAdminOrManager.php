@@ -19,11 +19,11 @@ class EnsureUserIsAdminOrManager
     public function handle(Request $request, Closure $next): Response
     {   
         if (Auth::check()) {
-            $admin_role = Role::where('name', 'admin')->first();
             $registered_user = User::with('roles')->find(Auth::user()->id);
-            if (in_array($admin_role, $registered_user->roles)) {
-                
-                return $next($request);
+            foreach ($registered_user->roles as $role) {
+                if ("admin" == $role->name) {
+                    return $next($request);
+                }
             }
         }
         return redirect(to:'/login');

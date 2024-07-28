@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\EnsureUserIsAdminOrManager;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,4 +21,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('/admin/all-users', AdminController::class);
+Route::resource('/admin/all-users', AdminController::class)
+->middleware(EnsureUserIsAdminOrManager::class);
