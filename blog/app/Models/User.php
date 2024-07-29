@@ -51,4 +51,9 @@ class User extends Authenticatable
             related:Role::class, table:'role_user_relations'
         );
     }
+
+    public function posts()
+    {
+        return $this->hasMany(related:Post::class);
+    }
 }
