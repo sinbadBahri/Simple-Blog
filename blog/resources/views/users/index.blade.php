@@ -17,7 +17,7 @@
           
             <tr>
               <th scope="row">{{ $user->id }}</th>
-              <th>{{ $user->name }}</th>
+              <th><a href="{{ route('all-users.edit', $user->id) }}">{{ $user->name }}</a></th>
               <td>{{ $user->email }}</td>
               <td>
                 <ul>

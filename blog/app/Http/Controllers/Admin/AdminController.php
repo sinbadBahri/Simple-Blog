@@ -78,15 +78,21 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view(view:'users.edit', data:compact(['user', 'roles']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        $user->roles()->sync($request->role);
+
+        return redirect(to:'/admin/all-users');
     }
 
     /**
