@@ -46,16 +46,22 @@ class AdminController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
 
-        $user->roles()->attach($request->role);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            $user->roles()->attach($request->role);
 
-        event(new Registered($user));
-        
+            event(new Registered($user));
+
+        } catch (\Throwable $th) {
+            $user->delete();
+        }
+
         return redirect(route('dashboard', absolute: false));
     }
 
