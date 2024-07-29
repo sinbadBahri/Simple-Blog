@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsAdminOrManager;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ require __DIR__.'/auth.php';
 
 Route::resource('/admin/all-users', AdminController::class)
 ->middleware(EnsureUserIsAdminOrManager::class);
+
+Route::resource('/posts', PostController::class);
