@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsAdminOrManager;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,4 +35,5 @@ Route::middleware(EnsureUserIsAdminOrManager::class)->group(function () {
 Route::resource('/posts', PostController::class);
 Route::get('/posts/user/{id}', [PostController::class, 'userPosts'])
 ->name('user.posts');
-
+Route::post('/search/', [PostController::class, 'searchPost'])
+->name('search.posts');

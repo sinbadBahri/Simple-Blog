@@ -126,4 +126,10 @@ class PostController extends Controller
         Post::onlyTrashed()->find($id)->forceDelete();
         return redirect(to:'/');
     }
+
+    public function searchPost(Request $request)
+    {
+        $posts = Post::where('title', 'like', "%".$request->search."%")->paginate(2);
+        return view(view:'posts.searchResultPosts', data:compact(['posts']));
+    }
 }

@@ -30,8 +30,12 @@
                     <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                         {{ __('New Post') }}
                     </x-nav-link>
+                    
                 </div>
+                
+                
             </div>
+            
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -114,7 +118,11 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                
             </div>
+            
         </div>
+        
     </div>
+    
 </nav>
