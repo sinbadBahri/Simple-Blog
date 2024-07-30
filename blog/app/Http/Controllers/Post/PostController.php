@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
@@ -95,5 +95,23 @@ class PostController extends Controller
         $user = Auth::user();
         $posts = $user->posts;
         return view(view:'dashboard', data:compact('posts'));
+    }
+
+    public function trashedPosts()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view(view:'posts.trashPosts', data:compact(['posts']));
+    }
+
+    public function restoreTrashedPost(string $id): RedirectResponse
+    {
+        Post::onlyTrashed()->find($id)->restore();
+        return redirect(to:'/');
+    }
+
+    public function deletePermanentlyPost(string $id): RedirectResponse
+    {
+        Post::onlyTrashed()->find($id)->forceDelete();
+        return redirect(to:'/');
     }
 }

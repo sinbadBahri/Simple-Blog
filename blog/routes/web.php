@@ -24,6 +24,14 @@ Route::resource('/admin/all-users', AdminController::class)
 Route::get('/', function () {
     return redirect(to:'/posts');
 });
+// Route::get('/posts/trashed', [PostController::class, 'trashedPosts'])
+// ->middleware(EnsureUserIsAdminOrManager::class)->name('trash.posts');
+Route::middleware(EnsureUserIsAdminOrManager::class)->group(function () {
+    Route::get('/posts/trashed', [PostController::class, 'trashedPosts'])->name('trash.posts');
+    Route::get('/posts/trashed/{id}', [PostController::class, 'restoreTrashedPost']);
+    Route::delete('/posts/trashed/{id}', [PostController::class, 'deletePermanentlyPost']);
+});
 Route::resource('/posts', PostController::class);
 Route::get('/posts/user/{id}', [PostController::class, 'userPosts'])
 ->name('user.posts');
+
