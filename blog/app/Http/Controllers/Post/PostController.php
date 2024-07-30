@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,15 +26,23 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view(view:'posts.createPost', data:compact(['user']));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request): RedirectResponse
+    { 
+
+        Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user()->id,
+        ]);
+
+        return redirect(to:'/dashboard');
     }
 
     /**
