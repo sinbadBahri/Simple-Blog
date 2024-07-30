@@ -6,9 +6,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsAdminOrManager;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,4 +22,9 @@ require __DIR__.'/auth.php';
 Route::resource('/admin/all-users', AdminController::class)
 ->middleware(EnsureUserIsAdminOrManager::class);
 
+Route::get('/', function () {
+    return redirect(to:'/posts');
+});
 Route::resource('/posts', PostController::class);
+Route::get('/posts/user/{id}', [PostController::class, 'userPosts'])
+->name('user.posts');

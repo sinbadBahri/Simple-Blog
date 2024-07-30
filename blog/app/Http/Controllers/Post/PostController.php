@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+
+use function Ramsey\Uuid\v1;
 
 class PostController extends Controller
 {
@@ -63,5 +66,11 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function userPosts(string $id)
+    {
+        $posts = User::find($id)->posts;
+        return view(view:'posts.userPosts', data:compact(['posts']));
     }
 }
