@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-use function Ramsey\Uuid\v1;
 
 class PostController extends Controller
 {
@@ -72,5 +72,12 @@ class PostController extends Controller
     {
         $posts = User::find($id)->posts;
         return view(view:'posts.userPosts', data:compact(['posts']));
+    }
+
+    public function userDashboard()
+    {
+        $user = Auth::user();
+        $posts = $user->posts;
+        return view(view:'dashboard', data:compact('posts'));
     }
 }
