@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
@@ -59,6 +60,7 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
+        Gate::authorize('update-post', $post);
         return view(view:'posts.edit', data:compact(['post']));
     }
 
