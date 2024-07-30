@@ -35,5 +35,5 @@ Route::middleware(EnsureUserIsAdminOrManager::class)->group(function () {
 Route::resource('/posts', PostController::class);
 Route::get('/posts/user/{id}', [PostController::class, 'userPosts'])
 ->name('user.posts');
-Route::post('/search/', [PostController::class, 'searchPost'])
+Route::get('/search/', [PostController::class, 'searchPost'])
 ->name('search.posts');

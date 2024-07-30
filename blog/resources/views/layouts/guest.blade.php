@@ -27,7 +27,7 @@
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
 
-            <form action="/search" method="POST" class="d-flex">
+            <form action="/search" method="GET" class="d-flex">
                     @csrf
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="search" name="search">
                     <button class="btn btn-outline-success" type="submit" name="submit">Search</button>
