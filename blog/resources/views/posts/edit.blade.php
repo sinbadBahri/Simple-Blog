@@ -30,6 +30,11 @@
                           </div>
     
                           <button type="submit" name="submit" class="btn btn-success">Confirm</button>
+
+
+
+                          <input type="hidden" name="_method", value="DELETE">
+                          <button type="submit" name="submit" class="btn btn-outline-danger">Remove Post</button>
                      
                     </div>
                 </div>
@@ -37,6 +42,10 @@
         </div>
     
     </form>
+
+    {{-- <form action="/posts/{{ $post->id }}" method="post">
+        
+    </form> --}}
 </x-app-layout>
 
 
