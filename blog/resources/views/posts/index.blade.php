@@ -13,4 +13,8 @@
   </div>
   @endforeach
 
+  <br>
+  <br>
+  <a class="page-link" href="{{ $posts->links() }}
+
 </x-guest-layout>

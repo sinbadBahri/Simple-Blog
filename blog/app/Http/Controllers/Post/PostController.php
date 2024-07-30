@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(2);
         return view(view:'posts.index', data:compact(['posts']));
     }
 
@@ -56,6 +56,7 @@ class PostController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * Only Admin users & the Author allowed 
      */
     public function edit(string $id)
     {
@@ -99,18 +100,27 @@ class PostController extends Controller
         return view(view:'dashboard', data:compact('posts'));
     }
 
+    /**
+     * Admin users Only. 
+     */
     public function trashedPosts()
     {
         $posts = Post::onlyTrashed()->get();
         return view(view:'posts.trashPosts', data:compact(['posts']));
     }
 
+    /**
+     * Admin users Only. 
+     */
     public function restoreTrashedPost(string $id): RedirectResponse
     {
         Post::onlyTrashed()->find($id)->restore();
         return redirect(to:'/');
     }
 
+    /**
+     * Admin users Only. 
+     */
     public function deletePermanentlyPost(string $id): RedirectResponse
     {
         Post::onlyTrashed()->find($id)->forceDelete();
