@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Finance\FinanceController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsAdminOrManager;
@@ -39,5 +40,8 @@ Route::get('/search/', [PostController::class, 'searchPost'])
 ->name('search.posts');
 
 
-//temp
-Route::get('/finance', [PostController::class, 'tempFunc']);
+
+Route::get('/pricing', [FinanceController::class, 'pricingView']);
+Route::get('/vip-purchase', [FinanceController::class, 'checkoutForm']);
+Route::post('/vip-purchase', [FinanceController::class, 'checkout'])
+->name('checkout');
