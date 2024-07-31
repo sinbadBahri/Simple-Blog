@@ -132,4 +132,9 @@ class PostController extends Controller
         $posts = Post::where('title', 'like', "%".$request->search."%")->paginate(2);
         return view(view:'posts.searchResultPosts', data:compact(['posts']));
     }
+
+    public function tempFunc()
+    {
+        return view(view:'finance.pricing');
+    }
 }

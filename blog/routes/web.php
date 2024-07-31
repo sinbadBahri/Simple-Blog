@@ -37,3 +37,7 @@ Route::get('/posts/user/{id}', [PostController::class, 'userPosts'])
 ->name('user.posts');
 Route::get('/search/', [PostController::class, 'searchPost'])
 ->name('search.posts');
+
+
+//temp
+Route::get('/finance', [PostController::class, 'tempFunc']);
