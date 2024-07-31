@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,12 +23,12 @@ class Transaction
     {
         
         $order = $this->makeOrder();
-        dd($order);
+        $payment = $this->makePayment($order);
 
         
     }
 
-    public function makeOrder()
+    private function makeOrder()
     {
         
         $order = Order::create([
@@ -37,5 +38,30 @@ class Transaction
         ]);
 
         return $order;
+    
     } 
+
+    private function makePayment(Order $order)
+    {
+        
+        $payment = Payment::create([
+            'order_id' => $order->id,
+            'gateway' => "pasargad",
+            'ref_num' => "ref_num",
+            'amount' => $this->addTax($order),
+        ]);
+
+        return $payment;
+        
+    }
+
+    private function addTax(Order $order)
+    {
+
+        $amount = $order->amount;
+        $amountPlusTax = 1.09 * $amount;
+
+        return $amountPlusTax;
+
+    }
 }
