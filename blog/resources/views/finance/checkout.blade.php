@@ -24,7 +24,7 @@
                               To finish the process, choose your gateway here...
                             <select class="form-select" aria-label="Default select example" name="gateway">
                                 <option selected value="saman">Saman Bank</option>
-                                <option value="zarrinpal">Zarrinpal Gateway</option>    
+                                <option value="idpay">Zarrinpal Gateway</option>    
                             </select>
                             <br>
                             <br>

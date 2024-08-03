@@ -5,7 +5,7 @@ namespace App\Support;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Support\Gateways\Saman;
-use App\Support\Gateways\Zarrinpal;
+use App\Support\Gateways\Idpay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +27,7 @@ class Transaction
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
 
-        $this->gatewayFactory()->pay($order);
+        return $this->gatewayFactory()->pay($payment);
 
         
     }
@@ -50,12 +50,10 @@ class Transaction
         
         $payment = Payment::create([
             'order_id' => $order->id,
-            'gateway' => "pasargad",
+            'gateway' => $this->request->gateway,
             'ref_num' => "ref_num",
             'amount' => $this->addTax($order),
         ]);
-
-        dd($this->gatewayFactory());
 
         return $payment;
         
@@ -76,7 +74,7 @@ class Transaction
 
         $gateway = [
             'saman' => Saman::class,
-            'zarrinpal' => Zarrinpal::class,
+            'idpay' => Idpay::class,
         ][$this->request->gateway];
 
         return resolve($gateway);

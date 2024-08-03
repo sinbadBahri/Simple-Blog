@@ -45,3 +45,6 @@ Route::get('/pricing', [FinanceController::class, 'pricingView']);
 Route::get('/vip-purchase', [FinanceController::class, 'checkoutForm']);
 Route::post('/vip-purchase', [FinanceController::class, 'checkout'])
 ->name('checkout');
+
+Route::post('payment/{gateway}/callback', [FinanceController::class, 'verify'])
+->name('payment.verify');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c28fd706ccd3dc03fed1c66660dc0053",
+    "content-hash": "0e852becc989a0c2b6880b1bdac2cd5d",
     "packages": [
         {
             "name": "brick/math",
@@ -505,6 +505,90 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "evryn/laravel-toman",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evryn/laravel-toman.git",
+                "reference": "b7951062cb302ab84b3d8ce8614452912809d56a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evryn/laravel-toman/zipball/b7951062cb302ab84b3d8ce8614452912809d56a",
+                "reference": "b7951062cb302ab84b3d8ce8614452912809d56a",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.8",
+                "laravel/framework": "^11.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.0",
+                "phpunit/phpunit": "^10.5|^11.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Evryn\\LaravelToman\\LaravelTomanServiceProvider"
+                    ],
+                    "aliases": {
+                        "Payment": "Evryn\\LaravelToman\\Facades\\Payment"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Evryn\\LaravelToman\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amirreza Nasiri",
+                    "email": "nasiri.amirreza.96@gmail.com",
+                    "homepage": "https://amirreza.in"
+                }
+            ],
+            "description": "A simple stable Laravel package to handle popular payment gateways in Iran including ZarinPal and IDPay.",
+            "homepage": "https://github.com/evryn/laravel-toman",
+            "keywords": [
+                "gateway",
+                "idpay",
+                "laravel",
+                "laravel-toman",
+                "laraveltoman",
+                "payment",
+                "toman",
+                "zarinpal",
+                "آیدی پی",
+                "درگاه",
+                "زرین پال",
+                "پرداخت"
+            ],
+            "support": {
+                "issues": "https://github.com/evryn/laravel-toman/issues",
+                "source": "https://github.com/evryn/laravel-toman/tree/v4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://yekpay.me/en/AmirrezaNasiri",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://zarinp.al/@amirrezan",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-04-19T21:56:43+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2637,6 +2721,65 @@
                 }
             ],
             "time": "2024-07-20T21:41:07+00:00"
+        },
+        {
+            "name": "pishran/zarinpal",
+            "version": "v4.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pishran/Zarinpal.git",
+                "reference": "1c58eb636b11ec0f07fbd0147b26a3ea86e66858"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pishran/Zarinpal/zipball/1c58eb636b11ec0f07fbd0147b26a3ea86e66858",
+                "reference": "1c58eb636b11ec0f07fbd0147b26a3ea86e66858",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0|^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pishran\\Zarinpal\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Pishran\\Zarinpal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Farid Aghili",
+                    "email": "farid@pishranit.ir",
+                    "homepage": "https://www.faridaghili.ir",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Zarinpal library for Laravel.",
+            "homepage": "https://github.com/pishran/zarinpal",
+            "keywords": [
+                "laravel",
+                "payment",
+                "zarinpal"
+            ],
+            "support": {
+                "issues": "https://github.com/pishran/Zarinpal/issues",
+                "source": "https://github.com/pishran/Zarinpal/tree/v4.3.4"
+            },
+            "time": "2024-03-27T07:33:29+00:00"
         },
         {
             "name": "psr/clock",

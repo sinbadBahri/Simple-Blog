@@ -2,12 +2,13 @@
 
 namespace App\Support\Gateways;
 
+use App\Models\Payment;
 use App\Support\Gateways\GatewayInterface;
 use Illuminate\Http\Request;
 
 class Saman implements GatewayInterface
 {
-    public function pay($order)
+    public function pay(Payment $payment)
     {
         //
     }

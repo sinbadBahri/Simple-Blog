@@ -2,6 +2,7 @@
 
 namespace App\Support\Gateways;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 interface GatewayInterface
@@ -12,7 +13,7 @@ interface GatewayInterface
     const TRANSACTION_FAILED = 'transaction.failed';
     
 
-    public function pay($order);
+    public function pay(Payment $payment);
 
     public function verify(Request $request);
 

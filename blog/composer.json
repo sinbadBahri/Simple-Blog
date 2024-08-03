@@ -6,10 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "evryn/laravel-toman": "^4.0",
         "hekmatinasser/verta": "^8.4",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "laravel/ui": "^4.5"
+        "laravel/ui": "^4.5",
+        "pishran/zarinpal": "^4.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
