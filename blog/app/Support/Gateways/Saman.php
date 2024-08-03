@@ -18,6 +18,16 @@ class Saman implements GatewayInterface
         //
     }
 
+    public function transactionSuccessful(Array $data)
+    {
+        //
+    }
+
+    public function transactionFailed(Array $data)
+    {
+        //
+    }
+
     public function getName(): string
     {
         return "saman";

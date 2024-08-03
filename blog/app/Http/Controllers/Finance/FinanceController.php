@@ -38,11 +38,4 @@ class FinanceController extends Controller
         return $this->transaction->checkout();
 
     }
-
-    public function verify()
-    {
-        
-
-        //
-    }
 }

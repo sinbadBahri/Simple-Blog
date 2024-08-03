@@ -32,6 +32,11 @@ class Transaction
         
     }
 
+    public function verify()
+    {
+        return $this->gatewayFactory()->verify($this->request);
+    }
+
     private function makeOrder()
     {
         

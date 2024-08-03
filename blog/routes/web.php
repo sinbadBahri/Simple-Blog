@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Finance\BankController;
 use App\Http\Controllers\Finance\FinanceController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\ProfileController;
@@ -46,5 +47,7 @@ Route::get('/vip-purchase', [FinanceController::class, 'checkoutForm']);
 Route::post('/vip-purchase', [FinanceController::class, 'checkout'])
 ->name('checkout');
 
-Route::post('payment/{gateway}/callback', [FinanceController::class, 'verify'])
+// Route::get('payment/{gateway}/callback', [FinanceController::class, 'callback'])
+// ->name('payment.callback');
+Route::post('/payment/{gateway}/callback', [BankController::class, 'verify'])
 ->name('payment.verify');

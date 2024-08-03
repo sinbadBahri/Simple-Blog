@@ -15,4 +15,9 @@ class Role extends Model
             related:User::class, table:'role_user_relations'
         );
     }
+
+    public function payment()
+    {
+        return $this->hasOne(related:Payment::class);
+    }
 }
