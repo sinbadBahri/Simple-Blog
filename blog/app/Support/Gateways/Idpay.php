@@ -67,8 +67,10 @@ class Idpay implements GatewayInterface
         $callback_info = $this->getCallBackInfo($request);
         $response = $this->getVerificationParameters($callback_info);
 
-        if ($response['status']) {
-            return $this->transactionSuccessful($response);
+        if (array_key_exists('status', $response)) {
+            if ($response['status'] == 100) {
+                return $this->transactionSuccessful($response);
+            }
         }
 
         return $this->transactionFailed($response);

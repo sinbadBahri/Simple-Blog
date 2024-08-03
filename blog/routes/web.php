@@ -42,12 +42,10 @@ Route::get('/search/', [PostController::class, 'searchPost'])
 
 
 
-Route::get('/pricing', [FinanceController::class, 'pricingView']);
+Route::get('/pricing', [FinanceController::class, 'pricingView'])
+->name('pricing');
 Route::get('/vip-purchase', [FinanceController::class, 'checkoutForm']);
 Route::post('/vip-purchase', [FinanceController::class, 'checkout'])
 ->name('checkout');
-
-// Route::get('payment/{gateway}/callback', [FinanceController::class, 'callback'])
-// ->name('payment.callback');
 Route::post('/payment/{gateway}/callback', [BankController::class, 'verify'])
 ->name('payment.verify');

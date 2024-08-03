@@ -20,7 +20,7 @@ class FinanceController extends Controller
 
     public function pricingView()
     {
-        return view(view:'finance.pricing');
+        return view('finance.pricing');
     }
 
     public function checkoutForm(Request $request)
