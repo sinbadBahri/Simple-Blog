@@ -23,10 +23,8 @@
                               <br>
                               To finish the process, choose your gateway here...
                             <select class="form-select" aria-label="Default select example" name="gateway">
-                                <option selected>Gateways</option>
-                                {{-- @foreach ($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>    
-                                @endforeach --}}
+                                <option selected value="saman">Saman Bank</option>
+                                <option value="zarrinpal">Zarrinpal Gateway</option>    
                             </select>
                             <br>
                             <br>

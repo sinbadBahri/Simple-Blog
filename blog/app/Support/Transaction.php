@@ -4,6 +4,8 @@ namespace App\Support;
 
 use App\Models\Order;
 use App\Models\Payment;
+use App\Support\Gateways\Saman;
+use App\Support\Gateways\Zarrinpal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +26,8 @@ class Transaction
         
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
+
+        $this->gatewayFactory()->pay($order);
 
         
     }
@@ -51,6 +55,8 @@ class Transaction
             'amount' => $this->addTax($order),
         ]);
 
+        dd($this->gatewayFactory());
+
         return $payment;
         
     }
@@ -62,6 +68,18 @@ class Transaction
         $amountPlusTax = 1.09 * $amount;
 
         return $amountPlusTax;
+
+    }
+
+    private function gatewayFactory()
+    {
+
+        $gateway = [
+            'saman' => Saman::class,
+            'zarrinpal' => Zarrinpal::class,
+        ][$this->request->gateway];
+
+        return resolve($gateway);
 
     }
 }
